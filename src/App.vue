@@ -3,7 +3,7 @@
     <Verify v-if="verify" />
     <Auth v-if="!verify && !auth" />
     <div v-if="!verify && auth">
-      <div id="nav"></div>
+      <div class="nav"><p>Survey Page Editor</p></div>
       <router-view/>
     </div>
   </div>
@@ -21,19 +21,28 @@ export default {
     Verify
   },
   computed: {
-    auth () { return this.$store.state.auth }
+    auth () { return this.$store.state.auth },
+    
   },
   data () {
     return {
-        verify: false
+        verify: false,
+        fonts: 'Poppins|Roboto|Oswald|Arial|Lobster|Pacifico|Satisfy|Bangers|Audiowide|Sacramento|Open Sans'.split('|')
     }
   },
   mounted () {
-    console.log('mounted App.vue');
     if ( this.$route.query.verify ) {
 		this.verify = true;
-	}
-    this.initStore();
+    }
+    var link = document.createElement('link');
+        link.setAttribute('rel','stylesheet');
+        link.setAttribute('type','text/css');
+        var fontSizes = ':ital,wght@0,100;0,300;0,400;0,700;1,100;1,400;1,700';
+        var fonts = 'https://fonts.googleapis.com/css2?'+this.fonts.map(f => 'family='+f+fontSizes).join('&');
+        console.log('fonts',fonts);
+            link.setAttribute('href',fonts);
+        //document.head.appendChild(link);    
+        this.initStore();
   },
   methods: {
     ...mapActions([

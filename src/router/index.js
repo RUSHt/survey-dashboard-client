@@ -1,19 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../components/Dashboard.vue'
-
+import SurveyDashboard from '../components/SurveyDashboard.vue'
+import SurveyEditor from '../components/SurveyEditor.vue';
 Vue.use(VueRouter)
 
   const routes = [
   {
     path: '/',
-    name: 'Dashboard',
-    component: Dashboard
+    name: 'SurveyEditor',
+    component: SurveyEditor
   },
   {
     path: '/index.html',
-    name: 'Dashboard',
-    component: Dashboard
+    name: 'SurveyEditor',
+    component: SurveyEditor
   }
 ]
 
